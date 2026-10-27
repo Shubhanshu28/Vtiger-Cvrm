@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
-    <line>
-      <![CDATA[Home]]>
-    </line>
   </reporter-output>
-  <suite started-at="2026-10-23T13:18:37 IST" name="Default suite" finished-at="2026-10-23T13:19:16 IST" duration-ms="38982">
+  <suite started-at="2026-10-27T13:42:29 IST" name="Default suite" finished-at="2026-10-27T13:42:31 IST" duration-ms="1342">
     <groups>
     </groups>
-    <test started-at="2026-10-23T13:18:37 IST" name="Default test" finished-at="2026-10-23T13:19:16 IST" duration-ms="38982">
-      <class name="CrmVtiger.LoginTest">
-        <test-method is-config="true" signature="browserLaunch()[pri:0, instance:CrmVtiger.LoginTest@f6efaab]" started-at="2026-10-23T13:18:37 IST" name="browserLaunch" finished-at="2026-10-23T13:18:50 IST" duration-ms="12444" status="PASS">
+    <test started-at="2026-10-27T13:42:29 IST" name="Default test" finished-at="2026-10-27T13:42:31 IST" duration-ms="1342">
+      <class name="learning_ad_rep.OrgTest">
+        <test-method signature="createOrgTest()[pri:0, instance:learning_ad_rep.OrgTest@3590fc5b]" started-at="2026-10-27T13:42:29 IST" name="createOrgTest" finished-at="2026-10-27T13:42:31 IST" duration-ms="1248" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- browserLaunch -->
-        <test-method signature="login()[pri:0, instance:CrmVtiger.LoginTest@f6efaab]" started-at="2026-10-23T13:18:50 IST" name="login" finished-at="2026-10-23T13:19:16 IST" duration-ms="25973" status="PASS">
-          <reporter-output>
-            <line>
-              <![CDATA[Home]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- login -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:CrmVtiger.LoginTest@f6efaab]" started-at="2026-10-23T13:19:16 IST" name="closeBrowser" finished-at="2026-10-23T13:19:16 IST" duration-ms="484" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- CrmVtiger.LoginTest -->
+        </test-method> <!-- createOrgTest -->
+      </class> <!-- learning_ad_rep.OrgTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

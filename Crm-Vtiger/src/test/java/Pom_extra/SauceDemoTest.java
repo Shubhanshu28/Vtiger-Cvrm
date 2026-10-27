@@ -2,9 +2,12 @@ package Pom_extra;
 
 import java.time.Duration;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import saucedemo_object_repository.CartPage;
 import saucedemo_object_repository.Checkout1Page;
@@ -15,7 +18,9 @@ import saucedemo_object_repository.LoginPage;
 
 public class SauceDemoTest {
 
-	public static void main(String[] args) throws InterruptedException {
+	@Test
+	@Parameters({ "un", "pwd" })
+	public void login(String un, String pwd) throws InterruptedException {
 
 		// Launch browser
 		WebDriver driver = new EdgeDriver();
@@ -32,13 +37,16 @@ public class SauceDemoTest {
 		WebElement password = lp.getPassword();
 		WebElement loginButton = lp.getLoginButton();
 
-		username.sendKeys("standard_user");
-		password.sendKeys("secret_sauce");
+		username.sendKeys(un);
+		password.sendKeys(pwd);
 		loginButton.click();
 
 		Thread.sleep(2000);
 
 		// Add product to cart
+		
+		String url = driver.getCurrentUrl();
+		Assert.assertEquals(url, url.contains("inventory"));
 		InventoryPage ip = new InventoryPage(driver);
 
 		WebElement addToCartButton = ip.getAddToCartButton();

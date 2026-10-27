@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="TestRunner1(failed)">
+    <parameter name="un" value="standard_user"/>
+    <parameter name="pwd" value="secret_sauce"/>
+    <classes>
+      <class name="Pom_extra.SauceDemoTest">
+        <methods>
+          <include name="login" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Pom_extra.SauceDemoTest -->
+    </classes>
+  </test> <!-- TestRunner1(failed) -->
+</suite> <!-- Failed suite [Suite] -->

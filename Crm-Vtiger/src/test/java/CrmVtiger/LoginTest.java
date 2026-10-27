@@ -12,8 +12,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import generic_utility.FileUtility;
@@ -27,7 +25,7 @@ public class LoginTest {
     String userName;
     String password;
 
-    @BeforeMethod
+   @Test()
     public void browserLaunch() throws IOException, ParseException {
         // Fetch JSON data first so 'browser' is not null
         browser = FileUtility.getDataFromJSON("browser");
@@ -51,8 +49,8 @@ public class LoginTest {
         driver.get(url);
     }
 
-    @Test
-    public void login() {
+   @Test(dependsOnMethods={"browserLaunch"})
+    public void login() throws IOException, ParseException {
         LoginPage lp = new LoginPage(driver);
         
         lp.getName().sendKeys(userName);
@@ -62,18 +60,25 @@ public class LoginTest {
         String homeTitle = lp.getHomeTitle().getText().trim();
         Reporter.log(homeTitle);
        Assert.assertEquals(homeTitle, "Home");
-
-        try {
-            LeadTest.leadCreation(driver);
-        } catch (EncryptedDocumentException | InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
         
+        try {
+//            LeadTest.leadCreation(driver);
+        	
+            OpportunitiesTest.createOpportunities(driver);
+        } catch (EncryptedDocumentException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
+       
     }
     
     
     // Closing the browser
-    @AfterMethod
+   @Test
     public void closeBrowser() {
     	driver.quit();
     }
