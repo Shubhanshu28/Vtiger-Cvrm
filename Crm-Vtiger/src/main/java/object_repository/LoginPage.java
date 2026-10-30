@@ -19,14 +19,16 @@ public class LoginPage {
 	@FindBy(css= "[class='hdrLink']")
 	private WebElement homeTitle;
 	
-	
-	public WebElement getName() {
-		return userName;
-	}
-	public WebElement getPassword() {
-		return password;
-	}
+	@FindBy(id = "submitButton")
+	private WebElement loginBtn;
+
 	public WebElement getHomeTitle() {
 		return homeTitle;
+	}
+	
+	public void login(String un, String pwd) {
+		userName.sendKeys(un);
+		password.sendKeys(pwd);
+		loginBtn.click();
 	}
 }

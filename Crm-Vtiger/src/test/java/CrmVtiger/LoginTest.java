@@ -5,7 +5,6 @@ import java.time.Duration;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -14,10 +13,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import base_utility.BaseClass;
 import generic_utility.FileUtility;
 import object_repository.LoginPage;
 
-public class LoginTest {
+public class LoginTest extends BaseClass {
 
     WebDriver driver = null;
     String browser;
@@ -49,12 +49,10 @@ public class LoginTest {
         driver.get(url);
     }
 
-   @Test(dependsOnMethods={"browserLaunch"})
+   @Test
     public void login() throws IOException, ParseException {
         LoginPage lp = new LoginPage(driver);
-        
-        lp.getName().sendKeys(userName);
-        lp.getPassword().sendKeys(password + Keys.ENTER);
+        lp.login(userName, password);
         
         //Validation
         String homeTitle = lp.getHomeTitle().getText().trim();
@@ -62,13 +60,12 @@ public class LoginTest {
        Assert.assertEquals(homeTitle, "Home");
         
         try {
-//            LeadTest.leadCreation(driver);
+            LeadTest.leadCreation(driver);
         	
             OpportunitiesTest.createOpportunities(driver);
         } catch (EncryptedDocumentException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         

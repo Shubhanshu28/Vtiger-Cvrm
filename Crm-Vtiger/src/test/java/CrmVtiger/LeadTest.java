@@ -1,6 +1,7 @@
 package CrmVtiger;
 
 import java.io.IOException;
+
 import java.time.Duration;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -8,11 +9,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import generic_utility.FileUtility;
 import object_repository.LeadPage;
 
+@Listeners(listeners_utility.List_Imp.class)
+
 public class LeadTest {
+	
+	@Test
 
     public static void leadCreation(WebDriver driver)
             throws InterruptedException, EncryptedDocumentException, IOException {
